@@ -1,4 +1,4 @@
-# facens-poo2-orders-1Sem21
+# Projeto Pedidos: Somente os modelos/entidades e o mapeamento objeto/relacional com JPA
 
 # Modelo Conceitual
 
