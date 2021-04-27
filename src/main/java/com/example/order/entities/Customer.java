@@ -24,7 +24,6 @@ public class Customer extends User {
     @OneToMany(mappedBy = "customer")
     private List<Order> orders = new ArrayList<>();
 
-
     
     public Customer(String email) {
         this.email = email;
