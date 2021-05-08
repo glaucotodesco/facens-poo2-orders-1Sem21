@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -24,7 +26,14 @@ public class Product implements Serializable{
 
     private Double price;
 
+    private ProductType type;
+
     @ManyToMany
+    @JoinTable(
+            name="TB_SUPPLIER_PRODUCT",
+            joinColumns =  @JoinColumn(name="PRODUCT_ID"),
+            inverseJoinColumns = @JoinColumn(name="SUPPLIER_ID")
+    )
     private List<Supplier> suppliers = new ArrayList<>();
 
 
@@ -69,6 +78,15 @@ public class Product implements Serializable{
         this.suppliers.add(supplier);
     }
     
+    public ProductType getType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -94,6 +112,7 @@ public class Product implements Serializable{
         return true;
     }
 
+   
   
 
 

@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name="TB_SUPPLIER")
@@ -22,7 +24,12 @@ public class Supplier implements Serializable{
 
     private String name;
 
-    @ManyToMany(mappedBy = "suppliers")
+    @ManyToMany
+    @JoinTable(
+        name="TB_SUPPLIER_PRODUCT",
+        joinColumns =  @JoinColumn(name="SUPPLIER_ID"),
+        inverseJoinColumns = @JoinColumn(name="PRODUCT_ID")
+    )
     private List<Product> products = new ArrayList<>();
 
     public Supplier(){

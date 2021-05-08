@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -18,6 +19,7 @@ public class Customer extends User {
 
     private String email;
 
+    //@OneToMany( cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @OneToMany( cascade = CascadeType.PERSIST)
     @JoinColumn(name="CUSTOMER_USER_ID")
     private List<Address> addresses = new ArrayList<>();
